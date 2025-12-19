@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="ArcGu Ice provides fast and reliable ice delivery services in Houston." />
 
-  <!-- Leaflet 地图 -->
+  <!-- Leaflet -->
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -70,6 +70,23 @@
     form button:hover {
       background: #143a63;
     }
+    .whatsapp-btn {
+      display: block;
+      margin-top: 12px;
+      padding: 12px;
+      background: #25D366;
+      color: #fff;
+      text-align: center;
+      border-radius: 4px;
+      font-size: 16px;
+      text-decoration: none;
+    }
+    .whatsapp-note {
+      font-size: 13px;
+      color: #666;
+      text-align: center;
+      margin-top: 6px;
+    }
     #map {
       width: 100%;
       height: 300px;
@@ -97,7 +114,7 @@
 
 <div class="container">
 
-  <!-- 下单表单 -->
+  <!-- �µ����� -->
   <div class="card">
     <h2>Place an Ice Order</h2>
 
@@ -138,15 +155,28 @@
         placeholder="Notes (optional)"
       ></textarea>
 
-      <!-- Formspree 辅助字段 -->
+      <!-- Formspree �����ֶ� -->
       <input type="hidden" name="_subject" value="New Ice Delivery Order - ArcGu Ice">
       <input type="hidden" name="_template" value="table">
 
       <button type="submit">Submit Order</button>
     </form>
+
+    <!-- WhatsApp һ���µ� -->
+    <a
+      class="whatsapp-btn"
+      href="https://wa.me/13918934971?text=Hello%20ArcGu%20Ice!%0A%0AI%20would%20like%20to%20place%20an%20ice%20delivery%20order:%0A%0AName:%20%0APhone:%20%0AAddress:%20%0AIce%20Quantity:%20%0ANotes:%20"
+      target="_blank"
+    >
+      Order via WhatsApp
+    </a>
+
+    <div class="whatsapp-note">
+      For urgent orders, WhatsApp is the fastest way to reach us.
+    </div>
   </div>
 
-  <!-- 实时配送地图（演示） -->
+  <!-- ��ͼ -->
   <div class="card">
     <h2>Live Delivery Map (Demo)</h2>
     <div id="map"></div>
@@ -155,7 +185,7 @@
     </p>
   </div>
 
-  <!-- 联系方式 -->
+  <!-- ��ϵ��ʽ -->
   <div class="card">
     <h2>Contact</h2>
     <p>
@@ -170,26 +200,24 @@
 </div>
 
 <footer>
-  © 2025 ArcGu Ice. All rights reserved.
+  ? 2025 ArcGu Ice. All rights reserved.
 </footer>
 
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
-  // 初始化地图（休斯顿）
   var map = L.map('map').setView([29.7604, -95.3698], 11);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
 
-  // 模拟配送车辆
-  var truckMarker = L.marker([29.7604, -95.3698]).addTo(map)
+  var truckMarker = L.marker([29.7604, -95.3698])
+    .addTo(map)
     .bindPopup('ArcGu Ice Delivery Truck')
     .openPopup();
 
-  // 简单模拟移动
   var route = [
     [29.7604, -95.3698],
     [29.7704, -95.3598],
